@@ -32,10 +32,81 @@ img.emoji {
 .wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
 :where(.wp-block-columns.is-layout-flex){gap: 2em;}
 .wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}</style>
+<link rel="stylesheet" id="csbwf_sidebar_style-css" href="https://creeva.github.io/vhsalumniband/wp-content/plugins/custom-share-buttons-with-floating-sidebar/css/csbwfs.css?ver=6.2.2" type="text/css" media="all">
 <link rel="stylesheet" id="membershiply-font-awesome-css" href="https://creeva.github.io/vhsalumniband/wp-content/themes/membershiply/css/font-awesome.min.css?ver=6.2.2" type="text/css" media="all">
 <link rel="stylesheet" id="membershiply-style-css" href="https://creeva.github.io/vhsalumniband/wp-content/themes/membershiply/style.css?ver=6.2.2" type="text/css" media="all">
 <link rel="stylesheet" id="membershiply-google-fonts-css" href="//fonts.googleapis.com/css?family=Noto+Sans+JP%3Awght%40400%3B500%3B700&#038;display=swap&#038;ver=6.2.2" type="text/css" media="all">
 <script type="text/javascript" src="https://creeva.github.io/vhsalumniband/wp-includes/js/jquery/jquery.min.js?ver=3.6.4" id="jquery-core-js"></script>
+<script type="text/javascript" id="jquery-core-js-after">
+
+	  var windWidth=jQuery( window ).width();
+	  //alert(windWidth);
+	  var animateWidth;
+	  var defaultAnimateWidth;	jQuery(document).ready(function() { 
+	animateWidth="55";
+    defaultAnimateWidth= animateWidth-10;
+	animateHeight="49";
+	defaultAnimateHeight= animateHeight-2;jQuery("div.csbwfsbtns a").hover(function(){
+  jQuery(this).animate({width:animateWidth});
+  },function(){
+    jQuery(this).stop( true, true ).animate({width:defaultAnimateWidth});
+  });jQuery("div.csbwfs-show").hide();
+  jQuery("div.csbwfs-show a").click(function(){
+    jQuery("div#csbwfs-social-inner").show(500);
+     jQuery("div.csbwfs-show").hide(500);
+    jQuery("div.csbwfs-hide").show(500);
+    csbwfsSetCookie("csbwfs_show_hide_status","active","1");
+  });
+  
+  jQuery("div.csbwfs-hide a").click(function(){
+     jQuery("div.csbwfs-show").show(500);
+      jQuery("div.csbwfs-hide").hide(500);
+     jQuery("div#csbwfs-social-inner").hide(500);
+     csbwfsSetCookie("csbwfs_show_hide_status","in_active","1");
+  });var button_status=csbwfsGetCookie("csbwfs_show_hide_status");
+    if (button_status =="in_active") {
+      jQuery("div.csbwfs-show").show();
+      jQuery("div.csbwfs-hide").hide();
+     jQuery("div#csbwfs-social-inner").hide();
+    } else {
+      jQuery("div#csbwfs-social-inner").show();
+     jQuery("div.csbwfs-show").hide();
+    jQuery("div.csbwfs-hide").show();
+    }});
+ csbwfsCheckCookie();function csbwfsSetCookie(cname,cvalue,exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = cname+"="+cvalue+"; "+expires;
+}
+
+function csbwfsGetCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) != -1) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+function csbwfsCheckCookie() {
+	var hideshowhide = ""
+    var button_status=csbwfsGetCookie("csbwfs_show_hide_status");
+    if (button_status != "") {
+        
+    } else {
+        csbwfsSetCookie("csbwfs_show_hide_status", "active",1);
+    }
+    if(hideshowhide=="yes")
+    {
+    csbwfsSetCookie("csbwfs_show_hide_status", "active",0);
+    }
+}
+</script>
 <script type="text/javascript" src="https://creeva.github.io/vhsalumniband/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.0" id="jquery-migrate-js"></script>
 <link rel="https://api.w.org/" href="https://creeva.github.io/vhsalumniband/index.php/wp-json/">
 <link rel="alternate" type="application/json" href="https://creeva.github.io/vhsalumniband/index.php/wp-json/wp/v2/pages/2799">
@@ -158,6 +229,7 @@ display: none;
 								<div class="menu-home2-container"><ul id="primary-menu" class="pmenu">
 <li id="menu-item-2814" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-2814"><a href="https://creeva.github.io/vhsalumniband/">Vermilion Bands</a></li>
 <li id="menu-item-2816" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2816"><a href="https://creeva.github.io/vhsalumniband/index.php/vermilion-high-school-band-directors/">Vermilion Band Directors</a></li>
+<li id="menu-item-3252" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3252"><a href="https://creeva.github.io/vhsalumniband/index.php/vermilion-band-history/">Band History</a></li>
 <li id="menu-item-2817" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor current-menu-ancestor current-menu-parent current-page-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-2817">
 <a href="https://creeva.github.io/vhsalumniband/index.php/media-links/">Media Links</a>
 <ul class="sub-menu">
@@ -232,7 +304,19 @@ display: none;
 
 
 
-<div style="height:25px" aria-hidden="true" class="wp-block-spacer"></div>
+<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<p>Vermilion Sailor Alumni band hosts all of it&#8217;s videos on YouTube. Original source highlight videos as well as videos of individual songs are included in the playlists arranged by year and band (High School or Alumni) that performed them.  Over a thousand videos are available on the <a href="https://www.youtube.com/@vermilionsailoralumniband/" data-type="URL" data-id="https://www.youtube.com/@vermilionsailoralumniband/">YouTube page</a>.  Playlists below link to individual groups. </p>
+
+
+
+<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<figure class="wp-block-image size-full is-resized is-style-rounded"><img decoding="async" alt="" width="837" height="680" data-srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/vhsmajorettes77vv.jpg 738w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/vhsmajorettes77vv-300x244.jpg 300w" data-src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/vhsmajorettes77vv.jpg" data-sizes="(max-width: 837px) 100vw, 837px" class="wp-image-3280 lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><noscript><img decoding="async" src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/vhsmajorettes77vv.jpg" alt="" class="wp-image-3280" width="837" height="680" srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/vhsmajorettes77vv.jpg 738w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/vhsmajorettes77vv-300x244.jpg 300w" sizes="(max-width: 837px) 100vw, 837px"></noscript></figure>
 
 
 
@@ -241,8 +325,48 @@ display: none;
 
 
 <ul>
-<li>1993-1994 Vermilion Sailor Marching Band</li>
+<li><a href="https://www.youtube.com/watch?v=jYvLun5_qHE&amp;list=PLqposBlPPQd-jWPGovPv8pXcEJo86QuyA&amp;pp=gAQBiAQB">1985-1986 Vermilion Sailor Marching Band</a></li>
+
+
+
+<li><a href="https://www.youtube.com/watch?v=BRqJkgv8TSk&amp;list=PLqposBlPPQd8j1dp_hrtuq3ep5jC5xOKN&amp;pp=gAQBiAQB">1986-1987 Vermilion Sailor Marching Band</a></li>
+
+
+
+<li><a href="https://www.youtube.com/watch?v=7l8vU2tVTVQ&amp;list=PLqposBlPPQd8IuKS1j10L6AablGV8F2AU&amp;pp=gAQBiAQB">1987-1988 Vermilion Sailor Marching Band</a></li>
+
+
+
+<li><a href="https://www.youtube.com/watch?v=-IyTJQS01S4&amp;list=PLqposBlPPQd9soozQK3WK60Z6vIEWBl6V&amp;pp=gAQBiAQB">1988-1989 Vermilion Sailor Marching Band</a></li>
+
+
+
+<li><a href="https://www.youtube.com/watch?v=I1knu9mno7E&amp;list=PLqposBlPPQd9kFQ7FMxhzErEV3pKERgle&amp;pp=gAQBiAQB">1989-1990 Vermilion Sailor Marching Band</a></li>
+
+
+
+<li><a href="https://www.youtube.com/watch?v=RLhWf50sG6o&amp;list=PLqposBlPPQd_zAbsUUj-9AQzM9ThrrjzH&amp;pp=gAQBiAQB">1990-1991 Vermilion Sailor Marching Band</a></li>
+
+
+
+<li><a href="https://www.youtube.com/watch?v=DQXbWVEcgW4&amp;list=PLqposBlPPQd94xJLoBLkTVP_S38msE5s8&amp;pp=gAQBiAQB">1991-1992 Vermilion Sailor Marching Band</a></li>
+
+
+
+<li><a href="https://www.youtube.com/watch?v=vYK_TKxeNtA&amp;list=PLqposBlPPQd8RBdctQsD_dt7eefLESjI4&amp;pp=gAQBiAQB">1992-1993 Vermilion Sailor Marching Band</a></li>
 </ul>
+
+
+
+<div style="height:25px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<figure class="wp-block-image size-full is-style-rounded"><img decoding="async" width="960" height="720" alt="" data-srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1.jpg 960w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1-300x225.jpg 300w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1-768x576.jpg 768w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1-850x638.jpg 850w" data-src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1.jpg" data-sizes="(max-width: 960px) 100vw, 960px" class="wp-image-2891 lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><noscript><img decoding="async" width="960" height="720" src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1.jpg" alt="" class="wp-image-2891" srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1.jpg 960w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1-300x225.jpg 300w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1-768x576.jpg 768w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1-850x638.jpg 850w" sizes="(max-width: 960px) 100vw, 960px"></noscript></figure>
+
+
+
+<div style="height:25px" aria-hidden="true" class="wp-block-spacer"></div>
 
 
 
@@ -356,12 +480,28 @@ display: none;
 
 
 
+<div style="height:25px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<figure class="wp-block-image size-large is-style-rounded"><img decoding="async" width="1024" height="707" alt="" data-srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1986-1987-Spring-Musical-Oklahoma-16-Vermilion-High-School-Vermilion-OH-1024x707.jpg 1024w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1986-1987-Spring-Musical-Oklahoma-16-Vermilion-High-School-Vermilion-OH-300x207.jpg 300w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1986-1987-Spring-Musical-Oklahoma-16-Vermilion-High-School-Vermilion-OH-768x530.jpg 768w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1986-1987-Spring-Musical-Oklahoma-16-Vermilion-High-School-Vermilion-OH-1536x1061.jpg 1536w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1986-1987-Spring-Musical-Oklahoma-16-Vermilion-High-School-Vermilion-OH-2048x1415.jpg 2048w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1986-1987-Spring-Musical-Oklahoma-16-Vermilion-High-School-Vermilion-OH-850x587.jpg 850w" data-src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1986-1987-Spring-Musical-Oklahoma-16-Vermilion-High-School-Vermilion-OH-1024x707.jpg" data-sizes="(max-width: 1024px) 100vw, 1024px" class="wp-image-3345 lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><noscript><img decoding="async" width="1024" height="707" src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1986-1987-Spring-Musical-Oklahoma-16-Vermilion-High-School-Vermilion-OH-1024x707.jpg" alt="" class="wp-image-3345" srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1986-1987-Spring-Musical-Oklahoma-16-Vermilion-High-School-Vermilion-OH-1024x707.jpg 1024w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1986-1987-Spring-Musical-Oklahoma-16-Vermilion-High-School-Vermilion-OH-300x207.jpg 300w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1986-1987-Spring-Musical-Oklahoma-16-Vermilion-High-School-Vermilion-OH-768x530.jpg 768w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1986-1987-Spring-Musical-Oklahoma-16-Vermilion-High-School-Vermilion-OH-1536x1061.jpg 1536w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1986-1987-Spring-Musical-Oklahoma-16-Vermilion-High-School-Vermilion-OH-2048x1415.jpg 2048w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1986-1987-Spring-Musical-Oklahoma-16-Vermilion-High-School-Vermilion-OH-850x587.jpg 850w" sizes="(max-width: 1024px) 100vw, 1024px"></noscript></figure>
+
+
+
+<div style="height:25px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
 <p><strong>Other Related Video Playlists:</strong></p>
 
 
 
 <ul>
-<li>test</li>
+<li><a href="https://www.youtube.com/watch?v=0f-SghWbfJg&amp;list=PLqposBlPPQd9I1_qrRFLb5xekLmstfQHO&amp;pp=gAQBiAQB">1989-1990 Vermilion Sailor Symphonic Band</a></li>
+
+
+
+<li><a href="https://www.youtube.com/watch?v=0f-SghWbfJg&amp;list=PLqposBlPPQd-OuSnMfbZ1bJuMg4Z4rJLO&amp;pp=gAQBiAQB">1989-1990 Vermilion Sailor Jazz Band</a></li>
 </ul>
 
 
@@ -425,6 +565,10 @@ display: none;
 
 
 <li><a href="https://twitter.com/sailorbands">Vermilion HS Bands Twitter Page</a></li>
+
+
+
+<li><a href="https://www.vcmabands.com/">VCMA Homepage</a></li>
 </ul>
 </section></aside><!-- #secondary -->
 </div>
@@ -455,6 +599,17 @@ display: none;
 <div id="smobile-menu" class="mobile-only"></div>
 <div id="mobile-menu-overlay"></div>
 
+<div id="csbwfs-delaydiv"><div class="csbwfs-social-widget" id="csbwfs-left" title="Share This With Your Friends" style="top:25%;left:0;">
+<div class="csbwfs-show"><a href="javascript:" title="Show Buttons" id="csbwfs-show"><img alt="Show Buttons" data-src="https://creeva.github.io/vhsalumniband/wp-content/plugins/custom-share-buttons-with-floating-sidebar/images/hide-l.png" class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><noscript><img src="https://creeva.github.io/vhsalumniband/wp-content/plugins/custom-share-buttons-with-floating-sidebar/images/hide-l.png" alt="Show Buttons"></noscript></a></div>
+<div id="csbwfs-social-inner">
+<div class="csbwfs-sbutton csbwfsbtns"><div id="csbwfs-fb" class="csbwfs-fb"><a href="javascript:" onclick="javascript:window.open('//www.facebook.com/sharer/sharer.php?u=https://creeva.github.io/vhsalumniband/index.php/media-links/video-links/?simply_static_page=1830', '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share On Facebook"><i class="csbwfs_facebook"></i></a></div></div>
+<div class="csbwfs-sbutton csbwfsbtns"><div id="csbwfs-tw" class="csbwfs-tw"><a href="javascript:" onclick="window.open('//twitter.com/share?url=https://creeva.github.io/vhsalumniband/index.php/media-links/video-links/?simply_static_page=1830&text=Video%20Links','_blank','width=800,height=300')" title="Share On Twitter"><i class="csbwfs_twitter"></i></a></div></div>
+<div class="csbwfs-sbutton csbwfsbtns"><div id="csbwfs-li" class="csbwfs-li"><a href="javascript:" onclick="javascript:window.open('//www.linkedin.com/cws/share?mini=true&url=https://creeva.github.io/vhsalumniband/index.php/media-links/video-links/?simply_static_page=1830','','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=800');return false;" title="Share On Linkedin"><i class="csbwfs_linkedin"></i></a></div></div>
+<div class="csbwfs-sbutton csbwfsbtns"><div id="csbwfs-pin" class="csbwfs-pin"><a onclick="javascript:void((function(){var e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','//assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)})());" href="javascript:void(0);" title="Share On Pinterest"><i class="csbwfs_pinterest"></i></a></div></div>
+<div class="csbwfs-sbutton csbwfsbtns"><div id="csbwfs-re" class="csbwfs-re"><a onclick="window.open('//reddit.com/submit?url=https://creeva.github.io/vhsalumniband/index.php/media-links/video-links/?simply_static_page=1830&amp;title=Video%20Links','Reddit','toolbar=0,status=0,width=1000,height=800');" href="javascript:void(0);" title="Share On Reddit"><i class="csbwfs_reddit"></i></a></div></div>
+</div>
+<div class="csbwfs-hide"><a href="javascript:" title="Hide Buttons" id="csbwfs-hide"><img alt="Hide Buttons" data-src="https://creeva.github.io/vhsalumniband/wp-content/plugins/custom-share-buttons-with-floating-sidebar/images/hide.png" class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><noscript><img src="https://creeva.github.io/vhsalumniband/wp-content/plugins/custom-share-buttons-with-floating-sidebar/images/hide.png" alt="Hide Buttons"></noscript></a></div>
+</div></div>
 <script type="text/javascript" src="https://creeva.github.io/vhsalumniband/wp-content/themes/membershiply/js/navigation.js?ver=20170823" id="membershiply-navigation-js"></script>
 <script type="text/javascript" src="https://creeva.github.io/vhsalumniband/wp-content/themes/membershiply/js/skip-link-focus-fix.js?ver=20170823" id="membershiply-skip-link-focus-fix-js"></script>
 <script type="text/javascript" src="https://creeva.github.io/vhsalumniband/wp-content/themes/membershiply/js/jquery.flexslider.js?ver=20150423" id="membershiply-flexslider-js"></script>

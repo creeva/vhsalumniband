@@ -32,10 +32,81 @@ img.emoji {
 .wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
 :where(.wp-block-columns.is-layout-flex){gap: 2em;}
 .wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}</style>
+<link rel="stylesheet" id="csbwf_sidebar_style-css" href="https://creeva.github.io/vhsalumniband/wp-content/plugins/custom-share-buttons-with-floating-sidebar/css/csbwfs.css?ver=6.2.2" type="text/css" media="all">
 <link rel="stylesheet" id="membershiply-font-awesome-css" href="https://creeva.github.io/vhsalumniband/wp-content/themes/membershiply/css/font-awesome.min.css?ver=6.2.2" type="text/css" media="all">
 <link rel="stylesheet" id="membershiply-style-css" href="https://creeva.github.io/vhsalumniband/wp-content/themes/membershiply/style.css?ver=6.2.2" type="text/css" media="all">
 <link rel="stylesheet" id="membershiply-google-fonts-css" href="//fonts.googleapis.com/css?family=Noto+Sans+JP%3Awght%40400%3B500%3B700&#038;display=swap&#038;ver=6.2.2" type="text/css" media="all">
 <script type="text/javascript" src="https://creeva.github.io/vhsalumniband/wp-includes/js/jquery/jquery.min.js?ver=3.6.4" id="jquery-core-js"></script>
+<script type="text/javascript" id="jquery-core-js-after">
+
+	  var windWidth=jQuery( window ).width();
+	  //alert(windWidth);
+	  var animateWidth;
+	  var defaultAnimateWidth;	jQuery(document).ready(function() { 
+	animateWidth="55";
+    defaultAnimateWidth= animateWidth-10;
+	animateHeight="49";
+	defaultAnimateHeight= animateHeight-2;jQuery("div.csbwfsbtns a").hover(function(){
+  jQuery(this).animate({width:animateWidth});
+  },function(){
+    jQuery(this).stop( true, true ).animate({width:defaultAnimateWidth});
+  });jQuery("div.csbwfs-show").hide();
+  jQuery("div.csbwfs-show a").click(function(){
+    jQuery("div#csbwfs-social-inner").show(500);
+     jQuery("div.csbwfs-show").hide(500);
+    jQuery("div.csbwfs-hide").show(500);
+    csbwfsSetCookie("csbwfs_show_hide_status","active","1");
+  });
+  
+  jQuery("div.csbwfs-hide a").click(function(){
+     jQuery("div.csbwfs-show").show(500);
+      jQuery("div.csbwfs-hide").hide(500);
+     jQuery("div#csbwfs-social-inner").hide(500);
+     csbwfsSetCookie("csbwfs_show_hide_status","in_active","1");
+  });var button_status=csbwfsGetCookie("csbwfs_show_hide_status");
+    if (button_status =="in_active") {
+      jQuery("div.csbwfs-show").show();
+      jQuery("div.csbwfs-hide").hide();
+     jQuery("div#csbwfs-social-inner").hide();
+    } else {
+      jQuery("div#csbwfs-social-inner").show();
+     jQuery("div.csbwfs-show").hide();
+    jQuery("div.csbwfs-hide").show();
+    }});
+ csbwfsCheckCookie();function csbwfsSetCookie(cname,cvalue,exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = cname+"="+cvalue+"; "+expires;
+}
+
+function csbwfsGetCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) != -1) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+function csbwfsCheckCookie() {
+	var hideshowhide = ""
+    var button_status=csbwfsGetCookie("csbwfs_show_hide_status");
+    if (button_status != "") {
+        
+    } else {
+        csbwfsSetCookie("csbwfs_show_hide_status", "active",1);
+    }
+    if(hideshowhide=="yes")
+    {
+    csbwfsSetCookie("csbwfs_show_hide_status", "active",0);
+    }
+}
+</script>
 <script type="text/javascript" src="https://creeva.github.io/vhsalumniband/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.0" id="jquery-migrate-js"></script>
 <link rel="https://api.w.org/" href="https://creeva.github.io/vhsalumniband/index.php/wp-json/">
 <link rel="alternate" type="application/json" href="https://creeva.github.io/vhsalumniband/index.php/wp-json/wp/v2/pages/246">
@@ -158,6 +229,7 @@ display: none;
 								<div class="menu-home2-container"><ul id="primary-menu" class="pmenu">
 <li id="menu-item-2814" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-page-ancestor menu-item-2814"><a href="https://creeva.github.io/vhsalumniband/">Vermilion Bands</a></li>
 <li id="menu-item-2816" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2816"><a href="https://creeva.github.io/vhsalumniband/index.php/vermilion-high-school-band-directors/">Vermilion Band Directors</a></li>
+<li id="menu-item-3252" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3252"><a href="https://creeva.github.io/vhsalumniband/index.php/vermilion-band-history/">Band History</a></li>
 <li id="menu-item-2817" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2817">
 <a href="https://creeva.github.io/vhsalumniband/index.php/media-links/">Media Links</a>
 <ul class="sub-menu">
@@ -214,32 +286,145 @@ display: none;
 	<div id="primary" class="featured-content content-area">
 		<main id="main" class="site-main">
 
-							<div class="featured-thumbnail">
-			<img width="756" height="380" alt="" decoding="async" data-srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1991-sailor-marching-bad.png 756w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1991-sailor-marching-bad-300x151.png 300w" data-src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1991-sailor-marching-bad.png" data-sizes="(max-width: 756px) 100vw, 756px" class="attachment-membershiply-slider size-membershiply-slider wp-post-image lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><noscript><img width="756" height="380" src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1991-sailor-marching-bad.png" class="attachment-membershiply-slider size-membershiply-slider wp-post-image" alt="" decoding="async" srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1991-sailor-marching-bad.png 756w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1991-sailor-marching-bad-300x151.png 300w" sizes="(max-width: 756px) 100vw, 756px"></noscript>		</div>
-	<article id="post-246" class="posts-entry fbox post-246 page type-page status-publish has-post-thumbnail hentry">
+					<article id="post-246" class="posts-entry fbox post-246 page type-page status-publish hentry">
 	<header class="entry-header">
 		<h1 class="entry-title">1990-1999 Vermilion Sailor Marching Bands</h1>	</header><!-- .entry-header -->
 
 	<div class="entry-content">
-		<p style="text-align: center;"><a href="http://vhsalumniband.org/history/1990-1999/class1990/">Class of 1990</a></p>
-<p><a href="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1991-sailor-marching-bad.png"><img decoding="async" alt="" width="871" height="438" data-srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1991-sailor-marching-bad.png 756w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1991-sailor-marching-bad-300x151.png 300w" data-src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1991-sailor-marching-bad.png" data-sizes="(max-width: 871px) 100vw, 871px" class="alignnone  wp-image-2723 lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><noscript><img decoding="async" class="alignnone  wp-image-2723" src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1991-sailor-marching-bad.png" alt="" width="871" height="438" srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1991-sailor-marching-bad.png 756w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1991-sailor-marching-bad-300x151.png 300w" sizes="(max-width: 871px) 100vw, 871px"></noscript></a></p>
-<p style="text-align: center;"><a href="http://vhsalumniband.org/history/1990-1999/class1991/">Class of 1991</a></p>
-<p><a href="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1992-Sailor-Marching-Band.png"><img decoding="async" alt="" width="853" height="622" data-srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1992-Sailor-Marching-Band.png 812w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1992-Sailor-Marching-Band-300x219.png 300w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1992-Sailor-Marching-Band-768x560.png 768w" data-src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1992-Sailor-Marching-Band.png" data-sizes="(max-width: 853px) 100vw, 853px" class="alignnone  wp-image-2724 lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><noscript><img decoding="async" class="alignnone  wp-image-2724" src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1992-Sailor-Marching-Band.png" alt="" width="853" height="622" srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1992-Sailor-Marching-Band.png 812w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1992-Sailor-Marching-Band-300x219.png 300w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1992-Sailor-Marching-Band-768x560.png 768w" sizes="(max-width: 853px) 100vw, 853px"></noscript></a></p>
-<p style="text-align: center;"><a href="http://vhsalumniband.org/history/1990-1999/class1992/">Class of 1992</a></p>
-<p style="text-align: center;"><a href="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1993-Vermilion-Sailor-Marching-Band.png"><img decoding="async" alt="" width="1165" height="708" data-srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1993-Vermilion-Sailor-Marching-Band.png 1165w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1993-Vermilion-Sailor-Marching-Band-300x182.png 300w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1993-Vermilion-Sailor-Marching-Band-1024x622.png 1024w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1993-Vermilion-Sailor-Marching-Band-768x467.png 768w" data-src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1993-Vermilion-Sailor-Marching-Band.png" data-sizes="(max-width: 1165px) 100vw, 1165px" class="alignnone size-full wp-image-2725 lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><noscript><img decoding="async" class="alignnone size-full wp-image-2725" src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1993-Vermilion-Sailor-Marching-Band.png" alt="" width="1165" height="708" srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1993-Vermilion-Sailor-Marching-Band.png 1165w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1993-Vermilion-Sailor-Marching-Band-300x182.png 300w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1993-Vermilion-Sailor-Marching-Band-1024x622.png 1024w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1993-Vermilion-Sailor-Marching-Band-768x467.png 768w" sizes="(max-width: 1165px) 100vw, 1165px"></noscript></a></p>
-<p style="text-align: center;"><a href="http://vhsalumniband.org/history/1990-1999/class1993/">Class of 1993</a></p>
-<p style="text-align: center;"><a href="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1994-Sailor-Marching-Band-2.jpg"><img decoding="async" alt="" width="2075" height="1439" data-srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1994-Sailor-Marching-Band-2.jpg 2075w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1994-Sailor-Marching-Band-2-300x208.jpg 300w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1994-Sailor-Marching-Band-2-1024x710.jpg 1024w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1994-Sailor-Marching-Band-2-768x533.jpg 768w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1994-Sailor-Marching-Band-2-1536x1065.jpg 1536w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1994-Sailor-Marching-Band-2-2048x1420.jpg 2048w" data-src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1994-Sailor-Marching-Band-2.jpg" data-sizes="(max-width: 2075px) 100vw, 2075px" class="alignnone size-full wp-image-2726 lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><noscript><img decoding="async" class="alignnone size-full wp-image-2726" src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1994-Sailor-Marching-Band-2.jpg" alt="" width="2075" height="1439" srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1994-Sailor-Marching-Band-2.jpg 2075w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1994-Sailor-Marching-Band-2-300x208.jpg 300w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1994-Sailor-Marching-Band-2-1024x710.jpg 1024w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1994-Sailor-Marching-Band-2-768x533.jpg 768w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1994-Sailor-Marching-Band-2-1536x1065.jpg 1536w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1994-Sailor-Marching-Band-2-2048x1420.jpg 2048w" sizes="(max-width: 2075px) 100vw, 2075px"></noscript></a></p>
-<p style="text-align: center;"><a href="http://vhsalumniband.org/history/1990-1999/class1994/">Class of 1994</a></p>
-<p style="text-align: center;"><img decoding="async" alt="" width="838" height="612" data-src="http://farm5.static.flickr.com/4044/4266085945_27ed569e50.jpg" class="alignnone lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><noscript><img decoding="async" class="alignnone" src="http://farm5.static.flickr.com/4044/4266085945_27ed569e50.jpg" alt="" width="838" height="612"></noscript></p>
-<p style="text-align: center;"><a href="http://vhsalumniband.org/history/1990-1999/class1995/">Class of 1995</a></p>
-<p style="text-align: center;"><a href="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1996-Sailor-Marching-Band.png"><img decoding="async" alt="" width="876" height="622" data-srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1996-Sailor-Marching-Band.png 876w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1996-Sailor-Marching-Band-300x213.png 300w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1996-Sailor-Marching-Band-768x545.png 768w" data-src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1996-Sailor-Marching-Band.png" data-sizes="(max-width: 876px) 100vw, 876px" class="alignnone size-full wp-image-2727 lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><noscript><img decoding="async" class="alignnone size-full wp-image-2727" src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1996-Sailor-Marching-Band.png" alt="" width="876" height="622" srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1996-Sailor-Marching-Band.png 876w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1996-Sailor-Marching-Band-300x213.png 300w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1996-Sailor-Marching-Band-768x545.png 768w" sizes="(max-width: 876px) 100vw, 876px"></noscript></a></p>
-<p style="text-align: center;"><a href="http://vhsalumniband.org/history/1990-1999/class1996/">Class of 1996</a></p>
-<p><a href="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1997-Sailor-Marching-Band-1.png"><img decoding="async" alt="" width="868" height="768" data-srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1997-Sailor-Marching-Band-1.png 868w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1997-Sailor-Marching-Band-1-300x265.png 300w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1997-Sailor-Marching-Band-1-768x680.png 768w" data-src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1997-Sailor-Marching-Band-1.png" data-sizes="(max-width: 868px) 100vw, 868px" class="alignnone size-full wp-image-2729 lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><noscript><img decoding="async" class="alignnone size-full wp-image-2729" src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1997-Sailor-Marching-Band-1.png" alt="" width="868" height="768" srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1997-Sailor-Marching-Band-1.png 868w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1997-Sailor-Marching-Band-1-300x265.png 300w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1997-Sailor-Marching-Band-1-768x680.png 768w" sizes="(max-width: 868px) 100vw, 868px"></noscript></a></p>
-<p style="text-align: center;"><a href="http://vhsalumniband.org/history/1990-1999/class1997/">Class of 1997</a></p>
-<p><a href="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1997-1998-Sailor-Marching-Band_4046979266_o.jpg"><img decoding="async" alt="" width="869" height="668" data-srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1997-1998-Sailor-Marching-Band_4046979266_o.jpg 600w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1997-1998-Sailor-Marching-Band_4046979266_o-300x231.jpg 300w" data-src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1997-1998-Sailor-Marching-Band_4046979266_o.jpg" data-sizes="(max-width: 869px) 100vw, 869px" class="alignnone  wp-image-2730 lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><noscript><img decoding="async" class="alignnone  wp-image-2730" src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1997-1998-Sailor-Marching-Band_4046979266_o.jpg" alt="" width="869" height="668" srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1997-1998-Sailor-Marching-Band_4046979266_o.jpg 600w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1997-1998-Sailor-Marching-Band_4046979266_o-300x231.jpg 300w" sizes="(max-width: 869px) 100vw, 869px"></noscript></a></p>
-<p style="text-align: center;"><a href="http://vhsalumniband.org/history/1990-1999/class1998/">Class of 1998</a></p>
-<p><a href="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1999-Sailor-Marching-Band.png"><img decoding="async" alt="" width="938" height="470" data-srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1999-Sailor-Marching-Band.png 938w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1999-Sailor-Marching-Band-300x150.png 300w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1999-Sailor-Marching-Band-768x385.png 768w" data-src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1999-Sailor-Marching-Band.png" data-sizes="(max-width: 938px) 100vw, 938px" class="alignnone size-full wp-image-2731 lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><noscript><img decoding="async" class="alignnone size-full wp-image-2731" src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1999-Sailor-Marching-Band.png" alt="" width="938" height="470" srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1999-Sailor-Marching-Band.png 938w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1999-Sailor-Marching-Band-300x150.png 300w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1999-Sailor-Marching-Band-768x385.png 768w" sizes="(max-width: 938px) 100vw, 938px"></noscript></a></p>
-<p style="text-align: center;"><a href="http://vhsalumniband.org/history/1990-1999/class1999/">Class of 1999</a></p>
+		
+<h2 class="wp-block-heading has-text-align-center">1990-1999 Vermilion Sailor Marching Bands</h2>
+
+
+
+<div style="height:25px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<figure class="wp-block-image size-large is-style-rounded"><a href="https://creeva.github.io/vhsalumniband/index.php/vermilion-bands/highschool/1990-1999/class1990/"><img decoding="async" width="1024" height="770" alt="" data-srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/Poster-1024x770.png 1024w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/Poster-300x225.png 300w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/Poster-768x577.png 768w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/Poster-850x639.png 850w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/Poster.png 1059w" data-src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/Poster-1024x770.png" data-sizes="(max-width: 1024px) 100vw, 1024px" class="wp-image-3365 lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><noscript><img decoding="async" width="1024" height="770" src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/Poster-1024x770.png" alt="" class="wp-image-3365" srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/Poster-1024x770.png 1024w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/Poster-300x225.png 300w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/Poster-768x577.png 768w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/Poster-850x639.png 850w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/Poster.png 1059w" sizes="(max-width: 1024px) 100vw, 1024px"></noscript></a></figure>
+
+
+
+<p class="has-text-align-center"><a href="https://creeva.github.io/vhsalumniband/index.php/vermilion-bands/highschool/1990-1999/class1990/" data-type="page" data-id="296">1989-1990 Vermilion Sailor Marching Band</a></p>
+
+
+
+<div style="height:25px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<figure class="wp-block-image is-resized is-style-rounded"><a href="https://creeva.github.io/vhsalumniband/index.php/vermilion-bands/highschool/1990-1999/class1991/"><img decoding="async" alt="" width="841" height="423" data-srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1991-sailor-marching-bad.png 756w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1991-sailor-marching-bad-300x151.png 300w" data-src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1991-sailor-marching-bad.png" data-sizes="(max-width: 841px) 100vw, 841px" class="wp-image-2723 lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><noscript><img decoding="async" src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1991-sailor-marching-bad.png" alt="" class="wp-image-2723" width="841" height="423" srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1991-sailor-marching-bad.png 756w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1991-sailor-marching-bad-300x151.png 300w" sizes="(max-width: 841px) 100vw, 841px"></noscript></a></figure>
+
+
+
+<p class="has-text-align-center"><a href="https://creeva.github.io/vhsalumniband/index.php/vermilion-bands/highschool/1990-1999/class1991/" data-type="page" data-id="294">1990-1991 Vermilion Sailor Marching Band</a></p>
+
+
+
+<div style="height:25px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<figure class="wp-block-image is-style-rounded"><a href="https://creeva.github.io/vhsalumniband/index.php/vermilion-bands/highschool/1990-1999/class1992/"><img decoding="async" width="812" height="592" alt="" data-srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1992-Sailor-Marching-Band.png 812w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1992-Sailor-Marching-Band-300x219.png 300w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1992-Sailor-Marching-Band-768x560.png 768w" data-src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1992-Sailor-Marching-Band.png" data-sizes="(max-width: 812px) 100vw, 812px" class="wp-image-2724 lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><noscript><img decoding="async" width="812" height="592" src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1992-Sailor-Marching-Band.png" alt="" class="wp-image-2724" srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1992-Sailor-Marching-Band.png 812w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1992-Sailor-Marching-Band-300x219.png 300w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1992-Sailor-Marching-Band-768x560.png 768w" sizes="(max-width: 812px) 100vw, 812px"></noscript></a></figure>
+
+
+
+<p class="has-text-align-center"><a href="https://creeva.github.io/vhsalumniband/index.php/vermilion-bands/highschool/1990-1999/class1992/" data-type="page" data-id="292">1991-1992 Vermilion Sailor Marching Band</a></p>
+
+
+
+<div style="height:25px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<figure class="wp-block-image is-style-rounded"><a href="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1993-Vermilion-Sailor-Marching-Band.png"><img decoding="async" width="1165" height="708" alt="" data-srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1993-Vermilion-Sailor-Marching-Band.png 1165w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1993-Vermilion-Sailor-Marching-Band-300x182.png 300w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1993-Vermilion-Sailor-Marching-Band-1024x622.png 1024w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1993-Vermilion-Sailor-Marching-Band-768x467.png 768w" data-src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1993-Vermilion-Sailor-Marching-Band.png" data-sizes="(max-width: 1165px) 100vw, 1165px" class="wp-image-2725 lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><noscript><img decoding="async" width="1165" height="708" src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1993-Vermilion-Sailor-Marching-Band.png" alt="" class="wp-image-2725" srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1993-Vermilion-Sailor-Marching-Band.png 1165w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1993-Vermilion-Sailor-Marching-Band-300x182.png 300w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1993-Vermilion-Sailor-Marching-Band-1024x622.png 1024w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1993-Vermilion-Sailor-Marching-Band-768x467.png 768w" sizes="(max-width: 1165px) 100vw, 1165px"></noscript></a></figure>
+
+
+
+<p class="has-text-align-center"><a href="http://vhsalumniband.org/history/1990-1999/class1993/">Class of 1993</a></p>
+
+
+
+<div style="height:25px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<figure class="wp-block-image is-style-rounded"><a href="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1994-Sailor-Marching-Band-2.jpg"><img decoding="async" width="2075" height="1439" alt="" data-srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1994-Sailor-Marching-Band-2.jpg 2075w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1994-Sailor-Marching-Band-2-300x208.jpg 300w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1994-Sailor-Marching-Band-2-1024x710.jpg 1024w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1994-Sailor-Marching-Band-2-768x533.jpg 768w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1994-Sailor-Marching-Band-2-1536x1065.jpg 1536w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1994-Sailor-Marching-Band-2-2048x1420.jpg 2048w" data-src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1994-Sailor-Marching-Band-2.jpg" data-sizes="(max-width: 2075px) 100vw, 2075px" class="wp-image-2726 lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><noscript><img decoding="async" width="2075" height="1439" src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1994-Sailor-Marching-Band-2.jpg" alt="" class="wp-image-2726" srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1994-Sailor-Marching-Band-2.jpg 2075w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1994-Sailor-Marching-Band-2-300x208.jpg 300w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1994-Sailor-Marching-Band-2-1024x710.jpg 1024w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1994-Sailor-Marching-Band-2-768x533.jpg 768w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1994-Sailor-Marching-Band-2-1536x1065.jpg 1536w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1994-Sailor-Marching-Band-2-2048x1420.jpg 2048w" sizes="(max-width: 2075px) 100vw, 2075px"></noscript></a></figure>
+
+
+
+<p class="has-text-align-center"><a href="http://vhsalumniband.org/history/1990-1999/class1994/">Class of 1994</a></p>
+
+
+
+<div style="height:25px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<figure class="wp-block-image is-resized is-style-rounded"><img decoding="async" alt="" width="838" height="612" data-src="http://farm5.static.flickr.com/4044/4266085945_27ed569e50.jpg" class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><noscript><img decoding="async" src="http://farm5.static.flickr.com/4044/4266085945_27ed569e50.jpg" alt="" width="838" height="612"></noscript></figure>
+
+
+
+<p class="has-text-align-center"><a href="http://vhsalumniband.org/history/1990-1999/class1995/">Class of 1995</a></p>
+
+
+
+<div style="height:25px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<figure class="wp-block-image is-style-rounded"><a href="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1996-Sailor-Marching-Band.png"><img decoding="async" width="876" height="622" alt="" data-srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1996-Sailor-Marching-Band.png 876w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1996-Sailor-Marching-Band-300x213.png 300w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1996-Sailor-Marching-Band-768x545.png 768w" data-src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1996-Sailor-Marching-Band.png" data-sizes="(max-width: 876px) 100vw, 876px" class="wp-image-2727 lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><noscript><img decoding="async" width="876" height="622" src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1996-Sailor-Marching-Band.png" alt="" class="wp-image-2727" srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1996-Sailor-Marching-Band.png 876w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1996-Sailor-Marching-Band-300x213.png 300w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1996-Sailor-Marching-Band-768x545.png 768w" sizes="(max-width: 876px) 100vw, 876px"></noscript></a></figure>
+
+
+
+<p class="has-text-align-center"><a href="http://vhsalumniband.org/history/1990-1999/class1996/">Class of 1996</a></p>
+
+
+
+<div style="height:25px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<figure class="wp-block-image is-style-rounded"><a href="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1997-Sailor-Marching-Band-1.png"><img decoding="async" width="868" height="768" alt="" data-srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1997-Sailor-Marching-Band-1.png 868w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1997-Sailor-Marching-Band-1-300x265.png 300w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1997-Sailor-Marching-Band-1-768x680.png 768w" data-src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1997-Sailor-Marching-Band-1.png" data-sizes="(max-width: 868px) 100vw, 868px" class="wp-image-2729 lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><noscript><img decoding="async" width="868" height="768" src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1997-Sailor-Marching-Band-1.png" alt="" class="wp-image-2729" srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1997-Sailor-Marching-Band-1.png 868w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1997-Sailor-Marching-Band-1-300x265.png 300w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1997-Sailor-Marching-Band-1-768x680.png 768w" sizes="(max-width: 868px) 100vw, 868px"></noscript></a></figure>
+
+
+
+<p class="has-text-align-center"><a href="http://vhsalumniband.org/history/1990-1999/class1997/">Class of 1997</a></p>
+
+
+
+<div style="height:25px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<figure class="wp-block-image is-resized is-style-rounded"><a href="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1997-1998-Sailor-Marching-Band_4046979266_o.jpg"><img decoding="async" alt="" width="838" height="644" data-srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1997-1998-Sailor-Marching-Band_4046979266_o.jpg 600w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1997-1998-Sailor-Marching-Band_4046979266_o-300x231.jpg 300w" data-src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1997-1998-Sailor-Marching-Band_4046979266_o.jpg" data-sizes="(max-width: 838px) 100vw, 838px" class="wp-image-2730 lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><noscript><img decoding="async" src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1997-1998-Sailor-Marching-Band_4046979266_o.jpg" alt="" class="wp-image-2730" width="838" height="644" srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1997-1998-Sailor-Marching-Band_4046979266_o.jpg 600w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1997-1998-Sailor-Marching-Band_4046979266_o-300x231.jpg 300w" sizes="(max-width: 838px) 100vw, 838px"></noscript></a></figure>
+
+
+
+<p class="has-text-align-center"><a href="http://vhsalumniband.org/history/1990-1999/class1998/">Class of 1998</a></p>
+
+
+
+<div style="height:25px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<figure class="wp-block-image is-style-rounded"><a href="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1999-Sailor-Marching-Band.png"><img decoding="async" width="938" height="470" alt="" data-srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1999-Sailor-Marching-Band.png 938w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1999-Sailor-Marching-Band-300x150.png 300w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1999-Sailor-Marching-Band-768x385.png 768w" data-src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1999-Sailor-Marching-Band.png" data-sizes="(max-width: 938px) 100vw, 938px" class="wp-image-2731 lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><noscript><img decoding="async" width="938" height="470" src="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1999-Sailor-Marching-Band.png" alt="" class="wp-image-2731" srcset="https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1999-Sailor-Marching-Band.png 938w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1999-Sailor-Marching-Band-300x150.png 300w, https://creeva.github.io/vhsalumniband/wp-content/uploads/2023/07/1999-Sailor-Marching-Band-768x385.png 768w" sizes="(max-width: 938px) 100vw, 938px"></noscript></a></figure>
+
+
+
+<p class="has-text-align-center"><a href="http://vhsalumniband.org/history/1990-1999/class1999/">Class of 1999</a></p>
+
+
+
+<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<p class="has-text-align-center"><a href="https://creeva.github.io/vhsalumniband/"><br>Vermilion Bands</a> – <a href="https://creeva.github.io/vhsalumniband/index.php/vermilion-bands/highschool/">Vermilion Sailor Marching Bands</a></p>
+
+
+
+<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
 
 			</div>
 <!-- .entry-content -->
@@ -290,6 +475,10 @@ display: none;
 
 
 <li><a href="https://twitter.com/sailorbands">Vermilion HS Bands Twitter Page</a></li>
+
+
+
+<li><a href="https://www.vcmabands.com/">VCMA Homepage</a></li>
 </ul>
 </section></aside><!-- #secondary -->
 </div>
@@ -320,6 +509,17 @@ display: none;
 <div id="smobile-menu" class="mobile-only"></div>
 <div id="mobile-menu-overlay"></div>
 
+<div id="csbwfs-delaydiv"><div class="csbwfs-social-widget" id="csbwfs-left" title="Share This With Your Friends" style="top:25%;left:0;">
+<div class="csbwfs-show"><a href="javascript:" title="Show Buttons" id="csbwfs-show"><img alt="Show Buttons" data-src="https://creeva.github.io/vhsalumniband/wp-content/plugins/custom-share-buttons-with-floating-sidebar/images/hide-l.png" class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><noscript><img src="https://creeva.github.io/vhsalumniband/wp-content/plugins/custom-share-buttons-with-floating-sidebar/images/hide-l.png" alt="Show Buttons"></noscript></a></div>
+<div id="csbwfs-social-inner">
+<div class="csbwfs-sbutton csbwfsbtns"><div id="csbwfs-fb" class="csbwfs-fb"><a href="javascript:" onclick="javascript:window.open('//www.facebook.com/sharer/sharer.php?u=https://creeva.github.io/vhsalumniband/index.php/vermilion-bands/highschool/1990-1999/?simply_static_page=1961', '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share On Facebook"><i class="csbwfs_facebook"></i></a></div></div>
+<div class="csbwfs-sbutton csbwfsbtns"><div id="csbwfs-tw" class="csbwfs-tw"><a href="javascript:" onclick="window.open('//twitter.com/share?url=https://creeva.github.io/vhsalumniband/index.php/vermilion-bands/highschool/1990-1999/?simply_static_page=1961&text=1990-1999%20Vermilion%20Sailor%20Marching%20Bands','_blank','width=800,height=300')" title="Share On Twitter"><i class="csbwfs_twitter"></i></a></div></div>
+<div class="csbwfs-sbutton csbwfsbtns"><div id="csbwfs-li" class="csbwfs-li"><a href="javascript:" onclick="javascript:window.open('//www.linkedin.com/cws/share?mini=true&url=https://creeva.github.io/vhsalumniband/index.php/vermilion-bands/highschool/1990-1999/?simply_static_page=1961','','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=800');return false;" title="Share On Linkedin"><i class="csbwfs_linkedin"></i></a></div></div>
+<div class="csbwfs-sbutton csbwfsbtns"><div id="csbwfs-pin" class="csbwfs-pin"><a onclick="javascript:void((function(){var e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','//assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)})());" href="javascript:void(0);" title="Share On Pinterest"><i class="csbwfs_pinterest"></i></a></div></div>
+<div class="csbwfs-sbutton csbwfsbtns"><div id="csbwfs-re" class="csbwfs-re"><a onclick="window.open('//reddit.com/submit?url=https://creeva.github.io/vhsalumniband/index.php/vermilion-bands/highschool/1990-1999/?simply_static_page=1961&amp;title=1990-1999%20Vermilion%20Sailor%20Marching%20Bands','Reddit','toolbar=0,status=0,width=1000,height=800');" href="javascript:void(0);" title="Share On Reddit"><i class="csbwfs_reddit"></i></a></div></div>
+</div>
+<div class="csbwfs-hide"><a href="javascript:" title="Hide Buttons" id="csbwfs-hide"><img alt="Hide Buttons" data-src="https://creeva.github.io/vhsalumniband/wp-content/plugins/custom-share-buttons-with-floating-sidebar/images/hide.png" class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><noscript><img src="https://creeva.github.io/vhsalumniband/wp-content/plugins/custom-share-buttons-with-floating-sidebar/images/hide.png" alt="Hide Buttons"></noscript></a></div>
+</div></div>
 <script type="text/javascript" src="https://creeva.github.io/vhsalumniband/wp-content/themes/membershiply/js/navigation.js?ver=20170823" id="membershiply-navigation-js"></script>
 <script type="text/javascript" src="https://creeva.github.io/vhsalumniband/wp-content/themes/membershiply/js/skip-link-focus-fix.js?ver=20170823" id="membershiply-skip-link-focus-fix-js"></script>
 <script type="text/javascript" src="https://creeva.github.io/vhsalumniband/wp-content/themes/membershiply/js/jquery.flexslider.js?ver=20150423" id="membershiply-flexslider-js"></script>
