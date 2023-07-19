@@ -9,8 +9,8 @@
 
 <channel>
 	<title>Vermilion Sailor Alumni Band</title>
-	<atom:link href="https://vhsalumniband.org/index.php/feed/" rel="self" type="application/rss+xml" />
-	<link>https://vhsalumniband.org</link>
+	<atom:link href="http://vhsalumniband.org/index.php/feed/" rel="self" type="application/rss+xml" />
+	<link>http://vhsalumniband.org</link>
 	<description></description>
 	<lastBuildDate>Wed, 19 Jul 2023 17:28:25 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,9 +21,9 @@
 	<generator>https://wordpress.org/?v=6.2.2</generator>
 
 <image>
-	<url>https://vhsalumniband.org/wp-content/uploads/2023/07/cropped-apple-touch-icon-256_4059050468_o-32x32.png</url>
+	<url>http://vhsalumniband.org/wp-content/uploads/2023/07/cropped-apple-touch-icon-256_4059050468_o-32x32.png</url>
 	<title>Vermilion Sailor Alumni Band</title>
-	<link>https://vhsalumniband.org</link>
+	<link>http://vhsalumniband.org</link>
 	<width>32</width>
 	<height>32</height>
 </image> 
