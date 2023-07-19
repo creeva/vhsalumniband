@@ -9,7 +9,7 @@
 
 <channel>
 	<title>Vermilion Sailor Alumni Band</title>
-	<atom:link href="/index.php/feed/" rel="self" type="application/rss+xml" />
+	<atom:link http://vhsalumniband.org/index.php/feed/" rel="self" type="application/rss+xml" />
 	<link></link>
 	<description></description>
 	<lastBuildDate>Wed, 19 Jul 2023 17:28:25 +0000</lastBuildDate>
