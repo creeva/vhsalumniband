@@ -8,10 +8,10 @@
 <channel>
 	<title>
 	Comments for Vermilion Sailor Alumni Band	</title>
-	<atom:link href="http://vhsalumniband.org/index.php/comments/feed/" rel="self" type="application/rss+xml" />
-	<link>http://vhsalumniband.org</link>
+	<atom:link href="/index.php/comments/feed/" rel="self" type="application/rss+xml" />
+	<link></link>
 	<description></description>
-	<lastBuildDate>Wed, 19 Jul 2023 17:28:25 +0000</lastBuildDate>
+	<lastBuildDate>Sun, 30 Jul 2023 17:47:51 +0000</lastBuildDate>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
