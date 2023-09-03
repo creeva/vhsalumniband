@@ -12,13 +12,13 @@
 	<atom:link href="/index.php/feed/" rel="self" type="application/rss+xml" />
 	<link></link>
 	<description></description>
-	<lastBuildDate>Sun, 30 Jul 2023 17:47:51 +0000</lastBuildDate>
+	<lastBuildDate>Sun, 03 Sep 2023 15:32:02 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=6.2.2</generator>
+	<generator>https://wordpress.org/?v=6.3.1</generator>
 
 <image>
 	<url>/wp-content/uploads/2023/07/cropped-apple-touch-icon-256_4059050468_o-32x32.png</url>
